@@ -4,7 +4,7 @@ import "./Weather.css";
 export default function Weather() {
   return (
     <div className="Weather">
-      <form>
+      <form className="mb-4">
         <div className="row">
           <div className="col-9">
             <input
@@ -31,15 +31,16 @@ export default function Weather() {
 								<img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="" />
 							</div>
 							<div>
-								17 °C | °F
-							</div>
-							<ul>
-								<li>Humidity: 61%</li>
-								<li>Wind: 5 km/h</li>
-							</ul>
+								<span className="temperature">17</span>
+								<span className="unit">°C | °F</span> 
+							</div>					
+						</div>
+						<div className="description">
+							<span className="me-3">Humidity: 61%</span>
+							<span>Wind: 7 km/h</span>
 						</div>
       		</div>
-					<div className="col-6">
+					<div className="col-6 citySearch">
 						<h1>London, UK</h1>
 						<ul>
 							<li>Saturday 18:00</li>
@@ -47,7 +48,6 @@ export default function Weather() {
 						</ul>
 					</div>
 				</div>
-      	
 			</div>
     </div>
   );
