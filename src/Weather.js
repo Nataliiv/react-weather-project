@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Audio } from "react-loader-spinner";
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -17,6 +18,7 @@ export default function Weather(props) {
 			icon: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
 			description: response.data.weather[0].description,
 			country: response.data.sys.country,
+			date: new Date(response.data.dt * 1000),
 		});
 	}
 
@@ -58,35 +60,8 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <div className="weatherInfo">
-          <div className="row">
-            <div className="col-6">
-              <div className="d-flex">
-                <div>
-                  <img
-                    src={weatherData.icon}
-                    alt={weatherData.description}
-                  />
-                </div>
-                <div>
-                  <span className="temperature">{Math.round(weatherData.temperature)}</span>
-                  <span className="unit">°C | °F</span>
-                </div>
-              </div>
-              <div className="description">
-                <span className="me-3">Humidity: {weatherData.humidity}%</span>
-                <span>Wind: {weatherData.wind} km/h</span>
-              </div>
-            </div>
-            <div className="col-6 citySearch">
-              <h1>{weatherData.city}, {weatherData.country}</h1>
-              <ul>
-                <li>Saturday 18:00</li>
-                <li className="text-capitalize">{weatherData.description}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+				<WeatherInfo data={weatherData} />
+      
       </div>
     );
 	} else {
@@ -102,6 +77,5 @@ export default function Weather(props) {
         wrapperClass
       />
     );
-	}
-  
+	};
 }
