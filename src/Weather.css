@@ -47,6 +47,10 @@
   top: -34px;
 }
 
+.Weather .unit a {
+  text-decoration: none;
+}
+
 .Weather .citySearch {
 	text-align: right;
 }
