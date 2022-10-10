@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Audio } from "react-loader-spinner";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
@@ -47,12 +46,11 @@ export default function Weather(props) {
               <input
                 type="search"
                 placeholder="Enter a city.."
-                className="form-control"
-                autoFocus="on"
+                className="form-control search-input"
                 onChange={handleCityChange}
               />
             </div>
-            <div className="col-3">
+            <div className="col-3 p-0">
               <input
                 type="submit"
                 value="Search"
@@ -63,20 +61,28 @@ export default function Weather(props) {
         </form>
         <WeatherInfo data={weatherData} />
         <WeatherForecast coordinates={weatherData.coordinates} />
+        <footer>
+          This project was coded by{" "}
+          <a
+            href="https://jazzy-melba-46dc0a.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Nataliia Ivanchak
+          </a>{" "}
+          and is{" "}
+          <a
+            href="https://github.com/Nataliiv/react-weather-project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            open-sourced on Github
+          </a>
+        </footer>
       </div>
     );
 	} else {
 		search();
-		return (
-      <Audio
-        height="80"
-        width="80"
-        radius="9"
-        color="#8ef6e4"
-        ariaLabel="loading"
-        wrapperStyle
-        wrapperClass
-      />
-    );
+		return "Loading the page"
 	};
 }
